@@ -1,0 +1,9 @@
+[submodule "third_party/cxxopts"]
+	path = third_party/cxxopts
+	url = https://github.com/jarro2783/cxxopts.git
+[submodule "third_party/cryptopp"]
+	path = third_party/cryptopp
+	url = https://github.com/weidai11/cryptopp.git
+[submodule "third_party/easyloggingpp"]
+	path = third_party/easyloggingpp
+	url = https://github.com/zuhd-org/easyloggingpp.git
