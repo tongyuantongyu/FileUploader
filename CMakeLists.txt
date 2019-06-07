@@ -41,8 +41,7 @@ else()
         message("Using prebuilt G++ cryptopp library.")
     else()
         message(FATAL_ERROR
-                "Neither own built nor prebuilt cryptopp library found.
-                 Please build the third party library first.")
+                "Neither own built nor prebuilt cryptopp library found. Please build the third party library first.")
     endif(MINGW AND EXISTS
           ${CMAKE_SOURCE_DIR}/third_party/cryptopp/.prebuilt/libcryptopp-mingw.a)
 endif(EXISTS ${CMAKE_SOURCE_DIR}/third_party/cryptopp/libcryptopp.a)
@@ -89,8 +88,7 @@ elseif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 #            )
 
 else()
-    message(FATAL_ERROR "This project is not checked on your platform. Please configure required library in
-    CMakeLists.txt yourself first.")
+    message(FATAL_ERROR "This project is not checked on your platform. Please configure required library in CMakeLists.txt yourself first.")
 endif(MINGW)
 
 
