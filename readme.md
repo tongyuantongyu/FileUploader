@@ -27,12 +27,12 @@ cmake --build ./cmake-build-release --target all --
 On Linux(Only tested with GNU C++ Compiler 8.3.0)<br/>
 For debug build
 ```bash
-cmake -DCMAKE_BUILD_TYPE=Debug -G "Unix Makefiles" -S ./ -B ./cmake-build-debug
+cmake -DCMAKE_BUILD_TYPE=Debug -G "Unix Makefiles" -S ./ -B ./cmake-build-debug/
 cmake --build ./cmake-build-debug --target all --
 ```
 For release build
 ```bash
-cmake -DCMAKE_BUILD_TYPE=Release -G "Unix Makefiles" -S ./ -B ./cmake-build-release
+cmake -DCMAKE_BUILD_TYPE=Release -G "Unix Makefiles" -S ./ -B ./cmake-build-release/
 cmake --build ./cmake-build-release --target all --
 ```
 Check cmake-build-debug or cmake-build-release folder for compiled binary.
