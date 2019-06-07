@@ -7,6 +7,7 @@ https://github.com/tongyuantongyu/FileUploader
 1. Clone the repository with its submodules
 ```bash
 git clone https://github.com/tongyuantongyu/FileUploader.git
+cd FileUploader
 git submodule update --init --recursive
 ```
 2. Compile cryptopp
