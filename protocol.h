@@ -32,6 +32,39 @@
 /// \brief Header for the implement of the nultithread file transfer protocol
 /// \note All things are in `file` namespace
 
+/** PACKET STRUCT OF THE PROTOCOL
+ * Data packet struct
+ * Client: Server Hello
+ * | MAGIC_HEADER 2 | LENGTH 8 | [ Encrypted [ MAGIC_HEADER 2 | VERSION 4] ]
+ *
+ * Server: Client Hello
+ * - Check is our header -> Close Connection
+ * - Try decrypt with our key ->
+ * | MAGIC_HEADER 2 | LENGTH 8 | 1 1
+ * - Check version compability ->
+ * | MAGIC_HEADER 2 | LENGTH 8 | 2 1 | [ Encrypted VERSION 4 ]
+ * ( If all passed )
+ * | MAGIC_HEADER 2 | LENGTH 8 | 0 1 | [ Encrypted SESSION 32 ]
+ * Where SESSION is a random 32 bytes data for further file transfer
+ *
+ * Client: File Negotiation
+ * | MAGIC_HEADER 2 | LENGTH 8 |
+ * [ Encrypted [ SESSION 32 | PIECE_SIZE 4 | FILE_LENGTH 8 | FILE_PATH 256 ] ]
+ * File with too long path can not be upload.
+ *
+ * Server: File Negotiation
+ * Can't open file for write
+ * | MAGIC_HEADER 2 | LENGTH 8 | [ Encrypted [ SESSION 32 | 1 1 ]
+ * OK. Wait for data
+ * | MAGIC_HEADER 2 | LENGTH 8 | [ Encrypted [ SESSION 32 | 0 1 ]
+ *
+ * Client: Start Transfering file
+ *      Start forking threads:
+ *      | MAGIC_HEADER_TRANSFER 2 | LENGTH 8 |
+ *      [ Encrypted [ SESSION 32 | FILE_PIECE_ORDER 8 | FILE_PIECE PIECE_SIZE ] ]
+ *
+ */
+
 namespace protocol {
 
 #ifdef WIN32
@@ -92,38 +125,6 @@ class Randomsession {
   string session(int length);
 };
 
-/** PACKET STRUCT OF THE PROTOCOL
- * Data packet struct
- * Client: Server Hello
- * | MAGIC_HEADER 2 | LENGTH 8 | [ Encrypted [ MAGIC_HEADER 2 | VERSION 4] ]
- *
- * Server: Client Hello
- * - Check is our header -> Close Connection
- * - Try decrypt with our key ->
- * | MAGIC_HEADER 2 | LENGTH 8 | 1 1
- * - Check version compability ->
- * | MAGIC_HEADER 2 | LENGTH 8 | 2 1 | [ Encrypted VERSION 4 ]
- * ( If all passed )
- * | MAGIC_HEADER 2 | LENGTH 8 | 0 1 | [ Encrypted SESSION 32 ]
- * Where SESSION is a random 32 bytes data for further file transfer
- *
- * Client: File Negotiation
- * | MAGIC_HEADER 2 | LENGTH 8 |
- * [ Encrypted [ SESSION 32 | PIECE_SIZE 4 | FILE_LENGTH 8 | FILE_PATH 256 ] ]
- * File with too long path can not be upload.
- *
- * Server: File Negotiation
- * Can't open file for write
- * | MAGIC_HEADER 2 | LENGTH 8 | [ Encrypted [ SESSION 32 | 1 1 ]
- * OK. Wait for data
- * | MAGIC_HEADER 2 | LENGTH 8 | [ Encrypted [ SESSION 32 | 0 1 ]
- *
- * Client: Start Transfering file
- *      Start forking threads:
- *      | MAGIC_HEADER_TRANSFER 2 | LENGTH 8 |
- *      [ Encrypted [ SESSION 32 | FILE_PIECE_ORDER 8 | FILE_PIECE PIECE_SIZE ] ]
- *
- */
 
 /// \brief @debug show raw value of the given data.
 /// \param str data to show

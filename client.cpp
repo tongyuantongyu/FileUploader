@@ -15,9 +15,9 @@
 
 INITIALIZE_EASYLOGGINGPP
 
-using boost::asio::ip::tcp;
-using boost::asio::buffer;
-
+/// \file client.cpp
+/// \brief Client Implementation
+/// \note
 /** Workflow
  * Client: Server Hello
  * Server: Client Hello
@@ -27,6 +27,9 @@ using boost::asio::buffer;
  * Cilent: Finish Transfering file
  * Server: Close file and clean
  */
+
+using boost::asio::ip::tcp;
+using boost::asio::buffer;
 
 /// \class Uploader
 /// \brief Class to perform upload work

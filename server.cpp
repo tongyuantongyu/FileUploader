@@ -17,11 +17,9 @@
 
 INITIALIZE_EASYLOGGINGPP
 
-using boost::asio::ip::tcp;
-using boost::asio::buffer;
-
-protocol::Randomsession sess_gen;
-
+/// \file server.cpp
+/// \brief Server Implementation
+/// \note
 /** Workflow
  * Client: Server Hello
  * Server: Client Hello
@@ -31,6 +29,11 @@ protocol::Randomsession sess_gen;
  * Cilent: Finish Transfering file
  * Server: Close file and clean
  */
+
+using boost::asio::ip::tcp;
+using boost::asio::buffer;
+
+protocol::Randomsession sess_gen;
 
 class Session;
 
