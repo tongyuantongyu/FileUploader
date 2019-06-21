@@ -116,7 +116,7 @@ class file_writer {
   ///         file system. However it can't know if the space left become
   ///         insufficient after it check due to other write perform to the
   ///         file system.
-  file_writer(const char *_file_name, const int &file_size);
+  file_writer(const char *_file_name, const std::uintmax_t &file_size);
 
   /// \brief constructor
   /// \note copy construct is not allowed as multi instance should never

@@ -97,7 +97,7 @@ int file_reader::read_all(char *buffer) {
   return 0;
 }
 
-file_writer::file_writer(const char *_file_name, const int &file_size) {
+file_writer::file_writer(const char *_file_name, const std::uintmax_t &file_size) {
 
   // get remaining space of current directory
   fs::space_info space = fs::space(fs::current_path());
