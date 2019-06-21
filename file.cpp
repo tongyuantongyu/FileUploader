@@ -53,7 +53,6 @@ int file_reader::read(char *buffer, std::uintmax_t &offset_) {
 
   // check file status before reading it
   if (!(ok && _file.is_open())) {
-    LOG(WARNING) << "File not open";
     return 0;
   } else if (_file.eof()) {
     // transfer thread should send a packet inform file transfer finished
