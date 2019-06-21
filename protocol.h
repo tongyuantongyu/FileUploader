@@ -2,8 +2,8 @@
 // Created by TYTY on 2019-05-07 007.
 //
 
-#ifndef TUNNEL_PROTOCOL_H
-#define TUNNEL_PROTOCOL_H
+#ifndef FILE_TRANSFER_PROTOCOL_H
+#define FILE_TRANSFER_PROTOCOL_H
 
 #ifdef WIN32
 #include <winsock2.h>
@@ -387,4 +387,4 @@ int file_transfer_confirm(AESDecrypter &dec,
                           const string &session);
 
 }
-#endif //TUNNEL_PROTOCOL_H
+#endif //FILE_TRANSFER_PROTOCOL_H

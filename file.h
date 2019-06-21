@@ -2,8 +2,8 @@
 // Created by TYTY on 2019-04-21 021.
 //
 
-#ifndef TUNNEL_FILE_H
-#define TUNNEL_FILE_H
+#ifndef FILE_TRANSFER_FILE_H
+#define FILE_TRANSFER_FILE_H
 
 #include <fstream>
 #include <iostream>
@@ -147,4 +147,4 @@ class file_writer {
 
 }
 
-#endif //TUNNEL_FILE_H
+#endif //FILE_TRANSFER_FILE_H

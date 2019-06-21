@@ -2,8 +2,8 @@
 // Created by TYTY on 2019-06-03 003.
 //
 
-#ifndef TUNNEL__ENCRYPT_H_
-#define TUNNEL__ENCRYPT_H_
+#ifndef FILE_TRANSFER_ENCRYPT_H_
+#define FILE_TRANSFER_ENCRYPT_H_
 
 #include <cstring>
 #include <string>
@@ -165,4 +165,4 @@ class AESDecrypter {
 };
 
 }
-#endif //TUNNEL__ENCRYPT_H_
+#endif //FILE_TRANSFER_ENCRYPT_H_
