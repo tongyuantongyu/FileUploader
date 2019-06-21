@@ -7,6 +7,7 @@
 #include <string>
 #include <functional>
 #include <thread>
+#include <chrono>
 
 #include "./third_party/cxxopts/include/cxxopts.hpp"
 
@@ -320,6 +321,9 @@ void transfer(Uploader *ul) {
 
 int main(int argc, char *argv[]) {
 
+  // time start
+  std::chrono::steady_clock::time_point  now = std::chrono::steady_clock::now();
+
   // arguments reader
   cxxopts::Options options("FileUploader-Client", "Uploader client.");
 
@@ -406,6 +410,13 @@ int main(int argc, char *argv[]) {
   #ifdef WIN32
   protocol::clear_environment();
   #endif
+
+  // print time info
+  auto t2 = std::chrono::steady_clock::now();
+  std::chrono::duration<double> time_span =
+      std::chrono::duration_cast<std::chrono::duration<double>>(t2 - now);
+
+  LOG(INFO) << "Upload finished using "<< time_span.count() << "seconds.";
 
   return 0;
 }
