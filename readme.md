@@ -4,19 +4,20 @@ Upload file from local to remote in multithread.<br/><br/>
 [https://github.com/tongyuantongyu/FileUploader](https://github.com/tongyuantongyu/FileUploader)
 
 ## How to run:
-###1. Clone the repository with its submodules
+### 1. Clone the repository with its submodules
 ```bash
 git clone https://github.com/tongyuantongyu/FileUploader.git
 cd FileUploader
 git submodule update --init --recursive
 ```
-###2. Compile cryptopp
+### 2. Compile cryptopp
 ```bash
 .\third_party\cryptopp\make static
 ```
 Or you can also download a prebuilt version of cryptopp library from the 
 [release](https://github.com/tongyuantongyu/FileUploader/releases) page.<br/>
-###3. Run cmake and compile<br/>
+
+### 3. Run cmake and compile<br/>
 On Windows(Using MinGW)<br/>
 For debug build
 ```bash
