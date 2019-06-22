@@ -15,7 +15,7 @@ git submodule update --init --recursive
 .\third_party\cryptopp\make static
 ```
 Or you can also download a prebuilt version of cryptopp library from the 
-[release](https://github.com/tongyuantongyu/FileUploader/releases) page.
+[release](https://github.com/tongyuantongyu/FileUploader/releases) page.<br/>
 3. Run cmake and compile<br/>
 On Windows(Using MinGW)<br/>
 For debug build
