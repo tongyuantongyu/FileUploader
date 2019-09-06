@@ -12,7 +12,7 @@ git submodule update --init --recursive
 ```
 ### 2. Compile cryptopp
 ```bash
-.\third_party\cryptopp\make static
+./third_party/cryptopp/make static
 ```
 Or you can also download a prebuilt version of cryptopp library from the 
 [release](https://github.com/tongyuantongyu/FileUploader/releases) page.<br/>

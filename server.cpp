@@ -420,7 +420,7 @@ class Acceptor : public std::enable_shared_from_this<Acceptor> {
       protocol::AESEncrypter &_enc,
       protocol::AESDecrypter &_dec) :
       // listen to 0.0.0.0 (Any address) with specific port
-      acceptor_(io_context, tcp::endpoint(tcp::v4(), port)),
+      acceptor_(io_context, tcp::endpoint(tcp::v6(), port)),
       enc(_enc),
       dec(_dec) {}
   /// \brief @static encapsulate boost::asio read function

@@ -1,8 +1,8 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.1)
 project(FileUploader)
 
 set(CMAKE_CXX_STANDARD 17)
-
+set(Boost_USE_STATIC_LIBS ON)
 # switch it to on to compile test code
 set(BUILD_TEST OFF)
 
@@ -51,7 +51,7 @@ endif(EXISTS ${CMAKE_SOURCE_DIR}/third_party/cryptopp/libcryptopp.a)
 if(MINGW)
     set(NEED_LIBS
             ws2_32.lib
-            stdc++fs
+#            stdc++fs
             boost_random-mt
             ${cryptopplib}
             )
