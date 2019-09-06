@@ -125,6 +125,10 @@ else()
     target_link_libraries(server ${NEED_LIBS})
 endif(WIN32)
 
+set(CMAKE_EXE_LINKER_FLAGS " -static")
+target_link_libraries(client -static-libgcc -static-libstdc++)
+target_link_libraries(server -static-libgcc -static-libstdc++)
+
 if(BUILD_TEST)
     if(WIN32)
         target_link_libraries(test_asio wsock32 ws2_32)
