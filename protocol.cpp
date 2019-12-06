@@ -372,8 +372,8 @@ int file_negotiation_finish(AESDecrypter &dec,
 
 string file_transfer_init(AESEncrypter &enc, const string &session) {
   LOG(DEBUG) << "file_transfer_init";
-  string enc_str(16, char(0xFE));
-  enc_str += session;
+//  string enc_str(16, char(0xFE));
+//  enc_str += session;
   return enc.encrypt(session);
 }
 
@@ -407,7 +407,7 @@ string file_transfer_build(AESEncrypter &enc,
                            const
                            string &piece) {
 //  LOG(DEBUG) << "file_transfer_build";
-  string enc_str(16, char(0xFF));
+  string enc_str;
   string _t;
   std::ostringstream a(_t);
   a << "order-" << order << " size-" << size
@@ -429,12 +429,12 @@ int file_transfer_read(AESDecrypter &dec,
 //  LOG(DEBUG) << "file_transfer_read";
   try {
     string dec_str = dec.decrypt(msg);
-    if (dec_str.substr(16, 32) != session) {
+    if (dec_str.substr(0, 32) != session) {
       throw std::runtime_error("file_transfer_read - Server session conflict.");
     }
-    order = stoul(dec_str.substr(48, 8), 0, 16);
-    size = stoul(dec_str.substr(56, 8), 0, 16);
-    piece = dec_str.substr(64, dec_str.size() - 64);
+    order = stoul(dec_str.substr(32, 8), 0, 16);
+    size = stoul(dec_str.substr(40, 8), 0, 16);
+    piece = dec_str.substr(48, dec_str.size() - 48);
     string _t;
     std::ostringstream a(_t);
     a << "order-" << order << " size-" << size
