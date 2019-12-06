@@ -317,9 +317,9 @@ class Session : public std::enable_shared_from_this<Session> {
                                       path);
     // move shared_ptr to class member to control life cycle
     try {
-      std::shared_ptr<file::file_writer>
-          _tf(new file::file_writer(path.c_str(), file_s));
-      _f = std::move(_tf);
+//      std::shared_ptr<file::file_writer>
+//          _tf(new file::file_writer(path.c_str(), file_s));
+      _f = std::make_shared<file::file_writer>(path, file_s);
       result = (int) !(_f->ok);
     }
     catch (file::NoEnoughSpace &e) {

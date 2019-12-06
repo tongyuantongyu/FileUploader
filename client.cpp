@@ -94,7 +94,7 @@ class Uploader : public std::enable_shared_from_this<Uploader> {
       dec(_dec),
       file_name(_file_name),
       piece_size(_piece_size),
-      f(file_name.c_str(), piece_size),
+      f(file_name, piece_size),
       ths(thread_number) {
     // force send small tcp packet to make protocol negotiation
     // works properly

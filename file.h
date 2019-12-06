@@ -59,7 +59,7 @@ class file_reader {
   /// \brief constructor
   /// \param _file_name name (and place) of the file to be read
   /// \param buff_size the size of the read buffer used in read function
-  file_reader(const char *_file_name, const int &buff_size);
+  file_reader(std::string _file_name, const int &buff_size);
 
   /// \brief constructor
   /// \note copy construct is not allowed as multi instance should never
@@ -116,7 +116,7 @@ class file_writer {
   ///         file system. However it can't know if the space left become
   ///         insufficient after it check due to other write perform to the
   ///         file system.
-  file_writer(const char *_file_name, const std::uintmax_t &file_size);
+  file_writer(std::string _file_name, const std::uintmax_t &file_size);
 
   /// \brief constructor
   /// \note copy construct is not allowed as multi instance should never

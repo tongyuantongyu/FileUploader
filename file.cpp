@@ -8,11 +8,16 @@ using namespace file;
 
 using std::string;
 
-file_reader::file_reader(const char *_file_name, const int &buff_size)
+file_reader::file_reader(string _file_name, const int &buff_size)
     : buff_s(buff_size) {
 
   // using std::filesystem library to check file availability
   try {
+    #ifdef WIN32
+    std::replace(_file_name.begin(), _file_name.end(), '/', '\\');
+    #else
+    std::replace(_file_name.begin(), _file_name.end(), '\\', '/');
+    #endif
     file_size = fs::file_size(_file_name);
   }
   catch (fs::filesystem_error &e) {
@@ -96,7 +101,7 @@ int file_reader::read_all(char *buffer) {
   return 0;
 }
 
-file_writer::file_writer(const char *_file_name, const std::uintmax_t &file_size) {
+file_writer::file_writer(string _file_name, const std::uintmax_t &file_size) {
 
   // get remaining space of current directory
   fs::space_info space = fs::space(fs::current_path());
@@ -106,6 +111,12 @@ file_writer::file_writer(const char *_file_name, const std::uintmax_t &file_size
     LOG(ERROR) << "Failed in writing file: No enough space.";
     throw NoEnoughSpace();
   }
+
+  #ifdef WIN32
+  std::replace(_file_name.begin(), _file_name.end(), '/', '\\');
+  #else
+  std::replace(_file_name.begin(), _file_name.end(), '\\', '/');
+  #endif
 
   // open file in binary write mode
   _file.open(_file_name, std::ios::out | std::ios::binary);
