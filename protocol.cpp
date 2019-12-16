@@ -272,7 +272,7 @@ int client_hello_verify(AESDecrypter &dec, const string &msg, string &session) {
     if (msg[0] == 0x00) {
       LOG(DEBUG) << "Got server reply.";
       string dec_str = dec.decrypt(msg.substr(1, msg.size() - 1));
-      session = dec_str.substr(0, dec_str.size() - 1);
+      session = dec_str.substr(0, 32);
       return 0;
     } else if (msg[0] == 0x01) {
       LOG(DEBUG) << "Server using another key.";
